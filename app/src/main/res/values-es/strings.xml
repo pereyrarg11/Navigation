@@ -6,4 +6,23 @@
     <string name="auth_label_phone_number">Número telefónico</string>
     <string name="auth_label_email">Correo electrónico</string>
     <string name="auth_action_continue">Continuar</string>
+    <string name="auth_error_email_empty">Escribe tu correo electrónico.</string>
+    <string name="auth_error_email_pattern">Escribe un correo electrónico con formato válido.</string>
+    <string name="auth_error_email_too_long">No debe ser mayor a $1%d caracteres.</string>
+    <string name="auth_error_last_name_empty">Escribe tu apellido</string>
+    <string name="auth_error_last_name_pattern">No se permiten caracteres especiales.</string>
+    <string name="auth_error_last_name_too_long">No debe ser mayor a %1$d caracteres.</string>
+    <string name="auth_error_name_empty">Escribe tu nombre.</string>
+    <string name="auth_error_name_pattern">No se permiten caracteres especiales.</string>
+    <string name="auth_error_name_too_long">No debe ser mayor a $1%d caracteres.</string>
+    <string name="auth_error_phone_number_empty">Escribe tu número telefónico.</string>
+    <string name="auth_error_phone_number_length">Debe tener %1$d dígitos.</string>
+    <string name="auth_error_phone_number_digits">Solo dígitos, sin espacios.</string>
+    <string name="core_error_unknown">Ocurrió un error. Intente más tarde.</string>
+    <string name="auth_message_registration_success">¡Registro exitoso!</string>
+    <string name="core_error_no_internet">No hay conexión a Internet.</string>
+    <string name="core_error_disk_full">No hay espacio en el dispositivo.</string>
+    <string name="auth_register_error_duplicated">Ya hay otro usuario con el mismo correo electrónico o número telefónico.</string>
+    <string name="core_label_error">Error</string>
+    <string name="core_action_accept">Aceptar</string>
 </resources>

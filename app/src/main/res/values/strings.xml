@@ -5,4 +5,23 @@
     <string name="auth_label_phone_number">Phone number</string>
     <string name="auth_label_email">Email</string>
     <string name="auth_action_continue">Continue</string>
+    <string name="auth_error_email_empty">Write your email.</string>
+    <string name="auth_error_email_pattern">Write an email with a valid format.</string>
+    <string name="auth_error_email_too_long">It must not be longer than $1%d characters.</string>
+    <string name="auth_error_last_name_empty">Type your last name.</string>
+    <string name="auth_error_last_name_pattern">Special characters are not allowed.</string>
+    <string name="auth_error_last_name_too_long">No longer than %1$d characters.</string>
+    <string name="auth_error_name_empty">Type your name.</string>
+    <string name="auth_error_name_pattern">Special characters are not allowed.</string>
+    <string name="auth_error_name_too_long">No longer than $1%d characters.</string>
+    <string name="auth_error_phone_number_empty">Type your phone number.</string>
+    <string name="auth_error_phone_number_length">Must have %1$d digits.</string>
+    <string name="auth_error_phone_number_digits">Only digits, no spaces.</string>
+    <string name="core_error_unknown">There was an error. Please try later.</string>
+    <string name="auth_message_registration_success">Register was successful!</string>
+    <string name="core_error_no_internet">There is not Internet connection.</string>
+    <string name="core_error_disk_full">There is no more space on the device.</string>
+    <string name="auth_register_error_duplicated">There is another user with the same phone number or email.</string>
+    <string name="core_label_error">Error</string>
+    <string name="core_action_accept">Accept</string>
 </resources>
