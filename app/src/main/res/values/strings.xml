@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Navigation</string>
+    <string name="auth_label_name">Name</string>
+    <string name="auth_label_last_name">Last name</string>
+    <string name="auth_label_phone_number">Phone number</string>
+    <string name="auth_label_email">Email</string>
+    <string name="auth_action_continue">Continue</string>
 </resources>

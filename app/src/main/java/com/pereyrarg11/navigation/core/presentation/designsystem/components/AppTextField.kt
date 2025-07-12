@@ -31,15 +31,16 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.pereyrarg11.navigation.core.presentation.designsystem.AppTheme
+import com.pereyrarg11.navigation.core.presentation.tools.UiText
 
 @Composable
 fun AppTextField(
     value: String,
     onValueChange: (String) -> Unit,
-    label: String,
-    hint: String,
+    label: UiText,
+    hint: UiText,
     modifier: Modifier = Modifier,
-    errorMessage: String? = null,
+    errorMessage: UiText? = null,
     isInputSecret: Boolean = false,
     keyboardType: KeyboardType = KeyboardType.Text,
 ) {
@@ -50,7 +51,7 @@ fun AppTextField(
         modifier = modifier,
     ) {
         Text(
-            text = label,
+            text = label.asString(),
             style = MaterialTheme.typography.bodyMedium,
         )
         Spacer(modifier = Modifier.height(6.dp))
@@ -70,7 +71,7 @@ fun AppTextField(
             ),
             placeholder = {
                 Text(
-                    text = hint,
+                    text = hint.asString(),
                     style = MaterialTheme.typography.bodyLarge,
                 )
             },
@@ -106,10 +107,10 @@ fun AppTextField(
                 keyboardType = keyboardType,
             )
         )
-        if (!errorMessage.isNullOrBlank()) {
+        if (errorMessage != null) {
             Spacer(modifier = Modifier.height(6.dp))
             Text(
-                text = errorMessage,
+                text = errorMessage.asString(),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.error,
             )
@@ -132,9 +133,9 @@ private fun AppTextFieldPreview(
         AppTextField(
             value = "Gabriel_",
             onValueChange = {},
-            label = "Name",
-            hint = "Your name",
-            errorMessage = "Special characters are not allowed",
+            label = UiText.StaticString("Name"),
+            hint = UiText.StaticString("Your name"),
+            errorMessage = UiText.StaticString("Special characters are not allowed"),
             isInputSecret = isInputSecret,
         )
     }

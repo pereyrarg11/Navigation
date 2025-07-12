@@ -9,15 +9,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.pereyrarg11.navigation.core.presentation.designsystem.AppTheme
+import com.pereyrarg11.navigation.core.presentation.tools.UiText
 
 @Composable
 fun AppLink(
-    label: String,
+    label: UiText,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Text(
-        text = label,
+        text = label.asString(),
         modifier = modifier
             .clickable(onClick = onClick),
         style = MaterialTheme.typography.titleSmall,
@@ -32,7 +33,7 @@ fun AppLink(
 private fun AppLinkPreview() {
     AppTheme {
         AppLink(
-            label = "Click Me",
+            label = UiText.StaticString("Click Me"),
             onClick = {},
         )
     }

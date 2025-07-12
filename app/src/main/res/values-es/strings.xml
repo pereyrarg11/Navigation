@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Navegación</string>
+    <string name="auth_label_name">Nombre</string>
+    <string name="auth_label_last_name">Apellido</string>
+    <string name="auth_label_phone_number">Número telefónico</string>
+    <string name="auth_label_email">Correo electrónico</string>
+    <string name="auth_action_continue">Continuar</string>
+</resources>
