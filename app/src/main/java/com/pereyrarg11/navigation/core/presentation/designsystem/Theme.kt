@@ -1,6 +1,5 @@
-package com.pereyrarg11.navigation.ui.theme
+package com.pereyrarg11.navigation.core.presentation.designsystem
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -12,32 +11,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Primary_Dark,
+    onPrimary = Surface_Dark,
+    surface = Surface_Dark,
+    surfaceContainerLowest = SurfaceLowest_Dark,
+    background = Background_Dark,
+    onSurface = OnSurface_Dark,
+    onSurfaceVariant = OnSurfaceVariant_Dark
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Primary,
+    onPrimary = OnSurface,
+    surface = Surface,
+    surfaceContainerLowest = SurfaceLowest,
+    background = Background,
+    onSurface = OnSurface,
+    onSurfaceVariant = OnSurfaceVariant
 )
 
 @Composable
-fun NavigationTheme(
+fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

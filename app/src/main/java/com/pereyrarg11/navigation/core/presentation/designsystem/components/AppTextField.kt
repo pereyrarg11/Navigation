@@ -30,7 +30,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import com.pereyrarg11.navigation.ui.theme.AppTheme
+import com.pereyrarg11.navigation.core.presentation.designsystem.AppTheme
 
 @Composable
 fun AppTextField(

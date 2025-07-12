@@ -27,8 +27,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.pereyrarg11.navigation.core.presentation.designsystem.AppTheme
 import com.pereyrarg11.navigation.presentation.data.BottomNavigationItem
-import com.pereyrarg11.navigation.ui.theme.NavigationTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
             var selectedItemIndex by rememberSaveable {
                 mutableIntStateOf(0)
             }
-            NavigationTheme {
+            AppTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
@@ -123,7 +123,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    NavigationTheme {
+    AppTheme {
         Greeting("Android")
     }
 }
