@@ -27,8 +27,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.pereyrarg11.navigation.auth.presentation.register.RegisterScreen
 import com.pereyrarg11.navigation.core.presentation.designsystem.AppTheme
 import com.pereyrarg11.navigation.presentation.data.BottomNavigationItem
+import org.koin.androidx.compose.KoinAndroidContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,52 +62,54 @@ class MainActivity : ComponentActivity() {
                 mutableIntStateOf(0)
             }
             AppTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    bottomBar = {
-                        NavigationBar {
-                            items.forEachIndexed { index, item ->
-                                NavigationBarItem(
-                                    selected = index == selectedItemIndex,
-                                    onClick = {
-                                        selectedItemIndex = index
-                                        // TODO: use navController to navigate
-                                    },
-                                    label = {
-                                        Text(text = item.title)
-                                    },
-                                    alwaysShowLabel = false,
-                                    icon = {
-                                        BadgedBox(
-                                            badge = {
-                                                if (item.badgeCount != null) {
-                                                    Badge {
-                                                        Text(text = item.badgeCount.toString())
+                KoinAndroidContext {
+                    Scaffold(
+                        modifier = Modifier.fillMaxSize(),
+                        bottomBar = {
+                            NavigationBar {
+                                items.forEachIndexed { index, item ->
+                                    NavigationBarItem(
+                                        selected = index == selectedItemIndex,
+                                        onClick = {
+                                            selectedItemIndex = index
+                                            // TODO: use navController to navigate
+                                        },
+                                        label = {
+                                            Text(text = item.title)
+                                        },
+                                        alwaysShowLabel = false,
+                                        icon = {
+                                            BadgedBox(
+                                                badge = {
+                                                    if (item.badgeCount != null) {
+                                                        Badge {
+                                                            Text(text = item.badgeCount.toString())
+                                                        }
+                                                    } else if (item.hasNews) {
+                                                        Badge()
                                                     }
-                                                } else if (item.hasNews) {
-                                                    Badge()
-                                                }
-                                            },
-                                        ) {
-                                            Icon(
-                                                imageVector = if (index == selectedItemIndex) {
-                                                    item.selectedIcon
-                                                } else {
-                                                    item.unselectedIcon
                                                 },
-                                                contentDescription = item.title,
-                                            )
+                                            ) {
+                                                Icon(
+                                                    imageVector = if (index == selectedItemIndex) {
+                                                        item.selectedIcon
+                                                    } else {
+                                                        item.unselectedIcon
+                                                    },
+                                                    contentDescription = item.title,
+                                                )
+                                            }
                                         }
-                                    }
-                                )
+                                    )
+                                }
                             }
                         }
+                    ) { innerPadding ->
+                        RegisterScreen(
+                            onSuccessfulRegistration = {},
+                            modifier = Modifier.padding(innerPadding)
+                        )
                     }
-                ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
                 }
             }
         }

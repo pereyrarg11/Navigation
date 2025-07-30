@@ -12,14 +12,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.pereyrarg11.navigation.core.presentation.designsystem.AppTheme
-import com.pereyrarg11.navigation.core.presentation.tools.UiText
 
 @Composable
 fun AppButton(
-    label: UiText,
-    onClick: () -> Unit,
+    label: String,
     modifier: Modifier = Modifier,
     isEnabled: Boolean = true,
+    onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
@@ -32,7 +31,7 @@ fun AppButton(
         enabled = isEnabled,
     ) {
         Text(
-            text = label.asString(),
+            text = label,
             style = MaterialTheme.typography.titleSmall,
         )
     }
@@ -44,7 +43,7 @@ fun AppButton(
 private fun AppButtonPreview() {
     AppTheme {
         AppButton(
-            label = UiText.StaticString("Click Me"),
+            label = "Click Me",
             onClick = {},
         )
     }
