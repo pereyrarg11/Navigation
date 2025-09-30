@@ -1,6 +1,5 @@
 package com.pereyrarg11.navigation.core.data.networking
 
-import com.pereyrarg11.navigation.BuildConfig
 import com.pereyrarg11.navigation.core.domain.util.AppResult
 import com.pereyrarg11.navigation.core.domain.util.DataError
 import io.ktor.client.HttpClient
@@ -17,12 +16,13 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.SerializationException
 
 suspend inline fun <reified Response : Any> HttpClient.get(
+    baseUrl: String,
     route: String,
     queryParameters: Map<String, Any?> = mapOf(),
 ): AppResult<Response, DataError.Network> {
     return safeCall {
         get {
-            url(constructRoute(route))
+            url(constructRoute(baseUrl, route))
             queryParameters.forEach { (key, value) ->
                 parameter(key, value)
             }
@@ -31,12 +31,13 @@ suspend inline fun <reified Response : Any> HttpClient.get(
 }
 
 suspend inline fun <reified Response : Any> HttpClient.delete(
+    baseUrl: String,
     route: String,
     queryParameters: Map<String, Any?> = mapOf(),
 ): AppResult<Response, DataError.Network> {
     return safeCall {
         delete {
-            url(constructRoute(route))
+            url(constructRoute(baseUrl, route))
             queryParameters.forEach { (key, value) ->
                 parameter(key, value)
             }
@@ -45,12 +46,13 @@ suspend inline fun <reified Response : Any> HttpClient.delete(
 }
 
 suspend inline fun <reified Request, reified Response : Any> HttpClient.post(
+    baseUrl: String,
     route: String,
     body: Request,
 ): AppResult<Response, DataError.Network> {
     return safeCall {
         post {
-            url(constructRoute(route))
+            url(constructRoute(baseUrl, route))
             setBody(body)
         }
     }
@@ -78,17 +80,21 @@ suspend inline fun <reified T> safeCall(performRequest: () -> HttpResponse): App
 suspend inline fun <reified T> responseToAppResult(response: HttpResponse): AppResult<T, DataError.Network> {
     return when (response.status.value) {
         in 200..299 -> AppResult.Success(response.body<T>())
-        400 -> AppResult.Success(response.body<T>()) // both error code and message are in DTO
+        // response DTO contains both message and error code, which must be handled by repository impl.
+        400 -> AppResult.Success(response.body<T>())
         401 -> AppResult.Error(DataError.Network.UNAUTHORIZED)
         in 500..599 -> AppResult.Error(DataError.Network.SERVER_ERROR)
         else -> AppResult.Error(DataError.Network.UNKNOWN)
     }
 }
 
-fun constructRoute(route: String): String {
+fun constructRoute(
+    baseUrl: String,
+    route: String,
+): String {
     return when {
-        route.contains(BuildConfig.AUTH_URL) -> route
-        route.startsWith("/") -> BuildConfig.AUTH_URL + route
-        else -> BuildConfig.AUTH_URL + "/$route"
+        route.contains(baseUrl) -> route
+        route.startsWith("/") -> baseUrl + route
+        else -> "$baseUrl/$route"
     }
 }

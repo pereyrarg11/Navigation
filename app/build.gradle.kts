@@ -21,6 +21,16 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField(
+            type = "int",
+            name = "AUTH_APP_TYPE",
+            value = gradleLocalProperties(rootDir, providers).getProperty("AUTH_APP_TYPE")
+        )
+        buildConfigField(
+            type = "int",
+            name = "AUTH_DEVICE_TYPE",
+            value = gradleLocalProperties(rootDir, providers).getProperty("AUTH_DEVICE_TYPE")
+        )
+        buildConfigField(
             type = "String",
             name = "AUTH_URL",
             value = "\"${gradleLocalProperties(rootDir, providers).getProperty("AUTH_URL")}\""
@@ -66,6 +76,8 @@ dependencies {
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.logging)
     implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.androidx.security.crypto.ktx)
+    implementation(libs.androidx.core.splashscreen)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

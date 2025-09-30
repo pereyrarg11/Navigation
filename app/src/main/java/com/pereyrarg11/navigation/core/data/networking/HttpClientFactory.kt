@@ -8,12 +8,12 @@ import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.request.header
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
+// TODO: move this client to Auth module
 class HttpClientFactory {
     fun build(): HttpClient {
         return HttpClient(CIO) {
@@ -33,11 +33,8 @@ class HttpClientFactory {
                 }
                 level = LogLevel.ALL
             }
-            // TODO: add basic auth by using https://ktor.io/docs/client-basic-auth.html#configure
             defaultRequest {
                 contentType(ContentType.Application.Json)
-                // TODO: get secrets and use them here
-                header("x-api-key", "your_api_key")
             }
         }
     }

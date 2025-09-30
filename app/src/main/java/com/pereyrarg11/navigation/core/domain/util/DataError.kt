@@ -8,6 +8,9 @@ sealed interface DataError : AppError {
         NO_INTERNET,
         SERVER_ERROR,
         SERIALIZATION,
+        OTP_NOT_ACTIVE,
+        USER_NOT_FOUND,
+        USER_NOT_ACTIVE,
         UNKNOWN,
     }
 

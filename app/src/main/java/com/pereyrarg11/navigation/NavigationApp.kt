@@ -1,8 +1,9 @@
 package com.pereyrarg11.navigation
 
 import android.app.Application
-import com.pereyrarg11.navigation.auth.data.di.authDataModule
-import com.pereyrarg11.navigation.auth.presentation.di.authPresentationModule
+import com.pereyrarg11.navigation.account.data.di.accountDataModule
+import com.pereyrarg11.navigation.account.presentation.di.accountPresentationModule
+import com.pereyrarg11.navigation.core.data.SecretKeys
 import com.pereyrarg11.navigation.core.data.di.coreDataModule
 import com.pereyrarg11.navigation.di.appModule
 import org.koin.android.ext.koin.androidContext
@@ -18,8 +19,15 @@ class NavigationApp : Application() {
             modules(
                 appModule,
                 coreDataModule,
-                authDataModule,
-                authPresentationModule,
+                accountDataModule,
+                accountPresentationModule,
+            )
+            properties(
+                mapOf(
+                    SecretKeys.AUTH_APP_TYPE.name to BuildConfig.AUTH_APP_TYPE,
+                    SecretKeys.AUTH_DEVICE_TYPE.name to BuildConfig.AUTH_DEVICE_TYPE,
+                    SecretKeys.AUTH_URL.name to BuildConfig.AUTH_URL,
+                )
             )
         }
     }
