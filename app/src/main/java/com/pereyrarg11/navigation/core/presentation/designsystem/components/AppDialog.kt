@@ -85,7 +85,7 @@ private fun AppDialogPreview() {
                     ) { }
                 },
                 secondaryButton = {
-                    AppButton(
+                    AppOutlinedButton (
                         label = "Secondary",
                     ) { }
                 }

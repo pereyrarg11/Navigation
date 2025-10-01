@@ -23,6 +23,7 @@ import com.pereyrarg11.navigation.R
 import com.pereyrarg11.navigation.core.presentation.designsystem.AppTheme
 import com.pereyrarg11.navigation.core.presentation.designsystem.components.AppButton
 import com.pereyrarg11.navigation.core.presentation.designsystem.components.AppDialog
+import com.pereyrarg11.navigation.core.presentation.designsystem.components.AppOutlinedButton
 import com.pereyrarg11.navigation.core.presentation.tools.ObserveAsEvents
 import com.pereyrarg11.navigation.core.presentation.tools.UiText
 import org.koin.androidx.compose.koinViewModel
@@ -95,7 +96,7 @@ private fun ProfileScreenContent(
             showLogoutDialog = true
         }
         Spacer(modifier = Modifier.height(16.dp))
-        AppButton(
+        AppOutlinedButton(
             label = stringResource(R.string.account_action_delete_account),
             isEnabled = !state.isSubmitting,
             modifier = Modifier.fillMaxWidth(),
@@ -117,7 +118,7 @@ private fun ProfileScreenContent(
                 }
             },
             secondaryButton = {
-                AppButton(
+                AppOutlinedButton(
                     label = stringResource(R.string.account_action_cancel),
                 ) {
                     showLogoutDialog = false
@@ -141,7 +142,7 @@ private fun ProfileScreenContent(
                 }
             },
             secondaryButton = {
-                AppButton(
+                AppOutlinedButton(
                     label = stringResource(R.string.account_action_cancel),
                 ) {
                     showDeleteAccountDialog = false
